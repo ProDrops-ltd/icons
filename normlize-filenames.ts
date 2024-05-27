@@ -1,8 +1,9 @@
-import { pathExists, readdir, stat, rename } from "fs-extra";
-import { basename, extname, join } from "path";
+import fs from "fs";
+import { pathExistsSync, renameSync, statSync } from "fs-extra";
+import path from "path";
 
 // Function to normalize file names
-const normalizeFileName = (fileName) => {
+const normalizeFileName = (fileName: string) => {
   // Replace spaces and hyphens with underscores
   let newName = fileName.replace(/[\s-]+/g, "_");
 
@@ -15,13 +16,13 @@ const normalizeFileName = (fileName) => {
 };
 
 // Function to generate a unique file name if there's a conflict
-const getUniqueFileName = async (folderPath, fileName) => {
-  let baseName = basename(fileName, extname(fileName));
-  const ext = extname(fileName);
+const getUniqueFileName = (folderPath: string, fileName: string) => {
+  let baseName = path.basename(fileName, path.extname(fileName));
+  const ext = path.extname(fileName);
   let newFileName = fileName;
   let counter = 1;
 
-  while (await pathExists(join(folderPath, newFileName))) {
+  while (pathExistsSync(path.join(folderPath, newFileName))) {
     newFileName = `${baseName}_${counter}${ext}`;
     counter++;
   }
@@ -30,32 +31,32 @@ const getUniqueFileName = async (folderPath, fileName) => {
 };
 
 // Function to traverse and rename files in a folder
-const traverseAndRename = async (folderPath) => {
+const traverseAndRename = (folderPath: string) => {
   try {
-    const files = await readdir(folderPath);
+    const files = fs.readdirSync(folderPath);
 
     for (const file of files) {
-      const fullPath = join(folderPath, file);
-      const stats = await stat(fullPath);
+      const fullPath = path.join(folderPath, file);
+      const stats = statSync(fullPath);
 
       if (stats.isFile()) {
         const normalizedFileName = normalizeFileName(file);
         let newFileName = normalizedFileName;
 
         if (normalizedFileName !== file) {
-          newFileName = await getUniqueFileName(folderPath, normalizedFileName);
+          newFileName = getUniqueFileName(folderPath, normalizedFileName);
         }
 
-        const newFullPath = join(folderPath, newFileName);
+        const newFullPath = path.join(folderPath, newFileName);
 
         // Rename the file if the name has changed
         if (fullPath !== newFullPath) {
-          await rename(fullPath, newFullPath);
+          renameSync(fullPath, newFullPath);
           console.log(`Renamed: ${fullPath} -> ${newFullPath}`);
         }
       } else if (stats.isDirectory()) {
         // Recursively traverse subdirectories
-        await traverseAndRename(fullPath);
+        traverseAndRename(fullPath);
       }
     }
   } catch (err) {
@@ -64,7 +65,7 @@ const traverseAndRename = async (folderPath) => {
 };
 
 // Path to the folder to normalize file names
-const folderPath = "./path/to/your/folder";
+const folderPath = "./svg";
 
 // Start the normalization process
 traverseAndRename(folderPath);

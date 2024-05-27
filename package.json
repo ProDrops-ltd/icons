@@ -1,21 +1,18 @@
 {
   "name": "@prodrops/icons",
-  "packageManager": "yarn@3.3.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "svgr": "svgr ./temp/flatten-output",
-    "tsc": "tsc",
-    "build": "node build.mjs"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^11.2.0"
   },
   "devDependencies": {
-    "@svgr/cli": "^8.1.0",
-    "@svgr/core": "^8.1.0",
-    "svgr": "^2.0.0",
-    "typescript": "^5.4.5"
-  },
-  "peerDependencies": {
-    "@types/react": "*",
-    "react": "*"
+    "@types/fs-extra": "^11.0.4"
   }
 }
