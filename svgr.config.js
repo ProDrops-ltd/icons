@@ -3,7 +3,7 @@ module.exports = {
   expandProps: 'end',
   typescript: true,
   svgo: true,
-  outDir: 'temp/svgr-output',
+  outDir: 'icons',
   index: true,
   replaceAttrValues: {
     '#28303F': 'currentColor',
