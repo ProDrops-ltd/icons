@@ -9,7 +9,8 @@
     "./huge-icons/*": "./dist/huge-icons/*.jsx"
   },
   "scripts": {
-    "svgr": "svgr ./svg",
+    "svgr:huge-icons": "svgr ./svg/huge-icons",
+    "svgr:unicons": "svgr ./svg/unicons",
     "tsc:huge-icons": "tsc -p ./tsconfig.huge-icons.json",
     "tsc:unicons": "tsc -p ./tsconfig.unicons.json"
   },
