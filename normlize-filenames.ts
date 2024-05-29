@@ -1,5 +1,4 @@
-import fs from "fs";
-import { pathExistsSync, renameSync, statSync } from "fs-extra";
+import fs, { existsSync, renameSync, statSync }from "fs";
 import path from "path";
 
 const normalizeFileName = (fileName: string) => {
@@ -18,7 +17,7 @@ const getUniqueFileName = (folderPath: string, fileName: string) => {
   let newFileName = fileName;
   let counter = 1;
 
-  while (pathExistsSync(path.join(folderPath, newFileName))) {
+  while (existsSync(path.join(folderPath, newFileName))) {
     newFileName = `${baseName}_${counter}${ext}`;
     counter++;
   }
