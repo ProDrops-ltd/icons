@@ -1,8 +1,6 @@
 export { default as AmericanFootball } from "./AmericanFootball";
 export { default as Barbell } from "./Barbell";
 export { default as Baseball } from "./Baseball";
-export { default as BasketBall } from "./BasketBall";
-export { default as Basketball } from "./Basketball";
 export { default as Bowling } from "./Bowling";
 export { default as Canoe } from "./Canoe";
 export { default as Card1 } from "./Card1";
@@ -20,3 +18,4 @@ export { default as GolfBall } from "./GolfBall";
 export { default as Pingpong } from "./Pingpong";
 export { default as TennisBall } from "./TennisBall";
 export { default as ThreeDice } from "./ThreeDice";
+export { default as Basketball } from "./Basketball";
