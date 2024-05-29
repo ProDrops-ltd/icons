@@ -6,7 +6,11 @@
     "./huge-icons": {
       "default": "./dist/huge-icons/index.js"
     },
-    "./huge-icons/*": "./dist/huge-icons/*.jsx"
+    "./unicons": {
+      "default": "./dist/unicons/index.js"
+    },
+    "./huge-icons/*": "./dist/huge-icons/*.jsx",
+    "./unicons/*": "./dist/unicons/*.jsx"
   },
   "scripts": {
     "svgr": "svgr ./svg",
