@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   icon: true,
   expandProps: 'end',
   typescript: true,
