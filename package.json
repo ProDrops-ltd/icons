@@ -2,6 +2,7 @@
   "name": "@prodrops/icons",
   "version": "1.0.0",
   "description": "",
+  "sideEffects": false,
   "exports": {
     "./huge-icons/*": "./dist/huge-icons/*.jsx",
     "./unicons/*": "./dist/unicons/*.jsx"
@@ -11,6 +12,7 @@
     "tsc:huge-icons": "tsc -p ./tsconfig.huge-icons.json",
     "tsc:unicons": "tsc -p ./tsconfig.unicons.json"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
